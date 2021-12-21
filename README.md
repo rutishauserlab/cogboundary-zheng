@@ -16,4 +16,7 @@ dandi download DANDI:000207
 
 Alternatively, download individual nwb files in the web interface of DANDI.
 
-## Code
+## Code - analysis
+All analysis is implemented in Matlab and requires the [matnwb 2.4.0 API](https://github.com/NeurodataWithoutBorders/matnwb/releases/tag/v2.4.0.0) to be installed (or higher, but we only tested with 2.4.0). 
+
+The main function is CB_analysis_main.m . Adjust the variables at the beginning to set the proper paths. Then, specify which subject to analyze (CBID) by setting XXX [todo].
