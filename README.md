@@ -14,9 +14,24 @@ After installing the DANDI CLI client, use the following commands to download th
 dandi download DANDI:000207
 ```
 
-Alternatively, download individual nwb files in the web interface of DANDI.
+Alternatively, download individual nwb files in the web interface of DANDI. You can also use the built in CellExplorer GUI in DANDI to explore the content of the file graphically.
 
 ## Code - analysis
 All analysis is implemented in Matlab and requires the [matnwb 2.4.0 API](https://github.com/NeurodataWithoutBorders/matnwb/releases/tag/v2.4.0.0) to be installed (or higher, but we only tested with 2.4.0). 
 
-The main function is CB_analysis_main.m . Adjust the variables at the beginning to set the proper paths. Then, specify which subject to analyze (CBID) by setting XXX [todo].
+The main function is CB_analysis_Dandi_main.m . To get started adjust the following variables accordingly:
+```
+basepathData = 'C:\projects\DandiDownload\000207';   % Path to Downloaded files
+basePathNWBCode = 'C:\svnwork\matnwb-2.4.0.0'; % path to matnwb API. We tested with 2.4.0 release, downloaded from https://github.com/NeurodataWithoutBorders/matnwb/releases/tag/v2.4.0.0
+basePathCode = 'C:\svnwork\cogboundary-zheng.git\trunk\'; % this code, downloaded from github
+```
+
+Then, set which session and type of response you would like to plot further down in the file:
+```
+CBID_toPlot = 4;   % Which Subject to plot (CBID, see Table in paper)
+plotMode = 1;      % What to plot. 1=encoding, boundary aligned, 2=encoding, stim onset aligned. 3=recognition test, stim onset aligned. 4=time order test, stim onset aligned.
+```
+
+Now, run the file and one figure per cell will be plotted. Example:
+
+
