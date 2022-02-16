@@ -37,8 +37,7 @@ end
 
 subjectID = nwbData.general_session_id; %CBID
 
-cellLabelStr = ['NWB ' subjectID '-' num2str(channelid) '-' num2str(cellNr) '-' num2str(brainAreaOfCell)];
-
+cellLabelStr = ['NWB ' subjectID '-' num2str(channelid) '-' num2str(cellNr) '-' brainAreaOfCell{1} ];
 
 [xpoints_NB,ypoints_NB] = find(spks_per_trial(indxNB,:) == 1); % NB
 [xpoints_SB,ypoints_SB] = find(spks_per_trial(indxSB,:) == 1); % SB

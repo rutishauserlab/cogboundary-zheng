@@ -35,7 +35,7 @@ boundaryTableSB3 = [indxSB ones(length(indxSB),1) boundary3_time(indxSB)];
 boundaryTableHB_SB1 = [indxHB ones(length(indxHB),1) boundary2_time(indxHB)];
 boundaryTableHB_SB2 = [indxHB ones(length(indxHB),1) boundary3_time(indxHB)];
 boundaryTableSB_all = [boundaryTableSB1; boundaryTableSB2; boundaryTableSB3; boundaryTableHB_SB1; boundaryTableHB_SB2];
-%for SB, prune absoluteTime=0 entires (these dont exist)
+%for SB, prune absoluteTime=0 entries (these dont exist)
 indsUse = find( boundaryTableSB_all(:,3)>0 );
 
 %== HB
@@ -48,11 +48,16 @@ boundaryTable = [boundaryTable; boundaryTableHB];
 
 %=== convert from relative to absolute time 
 for k=1:size(boundaryTable,1)
-    boundaryTable(k,4) = ttls_clip_onsets(boundaryTable(k,1)) + boundaryTable(k,3);
+    
+    %In prior version of export, timestamps were relative to video onset.
+    %no longer needed in newer version.
+    
+    %boundaryTable(k,4) = ttls_clip_onsets(boundaryTable(k,1)) + boundaryTable(k,3);  
+    boundaryTable(k,4) =  boundaryTable(k,3);
 end
 
 %boundary_time_recordered  contains trials re-ordered - NB, SB, HB
-boundary_time_recordered = boundaryTable(:,4)';
+boundary_time_reordered = boundaryTable(:,4)';
 
 %% prepare spiking data
 baseline_duration = floor(0.5/bin_width_raster);
@@ -61,8 +66,8 @@ trial_duration = floor(1/bin_width_raster);
 bins_n_raster = baseline_duration + trial_duration;
 spks_per_trial = zeros(135, bins_n_raster);
 for n_trial = 1:135
-    lower_limit = boundary_time_recordered(n_trial)-0.5;
-    upper_limit = boundary_time_recordered(n_trial)+ 1;
+    lower_limit = boundary_time_reordered(n_trial)-0.5;
+    upper_limit = boundary_time_reordered(n_trial)+ 1;
     spk_indx = (timestampsOfCell > lower_limit) & (timestampsOfCell < upper_limit);
     spk_selected = timestampsOfCell(spk_indx);
     spk_selected_bin = ceil((spk_selected - lower_limit)./(bin_width_raster));
@@ -73,7 +78,7 @@ end
 
 subjectID = nwbData.general_session_id; %CBID
 
-cellLabelStr = ['NWB ' subjectID '-' num2str(channelid) '-' num2str(cellNr) '-' num2str(brainAreaOfCell)];
+cellLabelStr = ['NWB ' subjectID '-' num2str(channelid) '-' num2str(cellNr) '-' brainAreaOfCell{1} ];
 
 
 [xpoints_NB,ypoints_NB] = find(spks_per_trial(1:30,:) == 1); % NB

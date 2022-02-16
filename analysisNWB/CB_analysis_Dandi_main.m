@@ -7,12 +7,12 @@
 % Data: https://dandiarchive.org/dandiset/000207/draft
 %
 % Code by Jie Zheng and Ueli Rutishauser, December 2021
-% See paper: Zheng et al. 
+% See paper: Zheng et al., Nat Neurosci, 2022.
 %
 
 %% ==== Set paths (modify these three variables for your system)
 % This is the path in which the NWB files were downloaded to from DANDI
-basepathData = 'C:\projects\DandiDownload\000207';  
+basepathData = 'C:\projects\DandiDownload4\000207';  
 
 % matnwb API. 2.4.0 release of NWB, downloaded from https://github.com/NeurodataWithoutBorders/matnwb/releases/tag/v2.4.0.0
 basePathNWBCode = 'C:\svnwork\matnwb-2.4.0.0';
@@ -57,7 +57,7 @@ elec_index = [nwbData.units.electrodes.data.load()]+1;
 channel_ids = channel_ids_index(elec_index);
 brain_areas = brain_areas_index(elec_index,:);
 
-bin_width_raster = 0.01; % 10ms per bin
+bin_width_raster = 0.01; %  Resolution of the raster plot (default is 0.01=10ms)
 bin_width_fr = 0.2; % 200ms per bin
 plot_flag = 'on';
 
