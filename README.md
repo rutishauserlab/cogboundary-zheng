@@ -4,7 +4,7 @@ This repository contains example code to illustrate how to utilize the Neural Da
 ## Paper
 This data was used to perform the analysis reported in this paper: **Neurons detect cognitive boundaries to structure episodic memories in humans**. While experience is continuous, memories are organized as discrete events. Cognitive boundaries are thought to segment experience and structure memory, but how this process is implemented remains unclear. We recorded the activity of single neurons in the human medial temporal lobe during the formation and retrieval of memories with complex narratives. Neurons responded to abstract cognitive boundaries between different episodes. Boundary-induced neural state changes during encoding predicted subsequent recognition accuracy but impaired event order memory, mirroring a fundamental behavioral tradeoff between content and time memory. Furthermore, the neural state following boundaries was reinstated during both successful retrieval and false memories. These findings reveal a neuronal substrate for detecting cognitive boundaries that transform experience into mnemonic episodes and structure mental time travel during retrieval.
 
-*Jie Zheng, Andrea Gómez Palacio Schjetnan, Mar Yebra, Clayton Mosher, Suneil Kalia, Taufik A. Valiante, Adam N. Mamelak, Gabriel Kreiman, Ueli Rutishauser. bioRxiv 2021.01.16.426538* [Reference to be updated upon publication]
+*Jie Zheng, Andrea Gómez Palacio Schjetnan, Mar Yebra, Clayton Mosher, Suneil Kalia, Taufik A. Valiante, Adam N. Mamelak, Gabriel Kreiman, Ueli Rutishauser. Nat Neurosci, 2022 (in press).*
 
 ## Links
 Github: https://github.com/rutishauserlab/cogboundary-zheng
